@@ -32,10 +32,17 @@
     </div>
     <p id="pp"></span></p>
     <p id="pp2"></span></p>
+    <p id="pp3"></span></p>
     <script src="bypass.js"></script>
+    <script src="bypass2.js"></script>
     <script>
         const p = document.getElementById('pp');
-        p.innerHTML = `${getFileName()}, ${Math.random()}`
+        p.innerHTML = `${getFileName()}, ${Math.random()}`;
+
+        setTimeout(() => {
+            const p = document.getElementById('pp3');
+            p.innerHTML = `ook = ${getOok()}`;
+        }, 1000);
     </script>
 </body>
 
