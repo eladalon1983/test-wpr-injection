@@ -30,7 +30,13 @@
         <p>2. IFrame (Bypassed): <span id="iframe" class="result">Loading</span></p>
         <p>3. Worker (Bypassed): <span id="worker" class="result">Loading</span></p>
     </div>
+    <p id="pp"></span></p>
+    <p id="pp2"></span></p>
     <script src="bypass.js"></script>
+    <script>
+        const p = document.getElementById('pp');
+        p.innerHTML = `${getFileName()}, ${Math.random()}`
+    </script>
 </body>
 
 </html>
