@@ -1,3 +1,20 @@
+const getFileName = () => {
+    const error = new Error();
+    const stack = error.stack;
+
+    // Grabs all URLs/paths in the stack trace
+    const matches = stack.match(/((https?|file|webpack-internal):\/\/[^\s)]+|(?:\/|[A-Z]:\\)[^\s)]+)/g);
+
+    // matches[0] is getFileName
+    // matches[1] is the caller
+    const callerPath = matches && matches[1] ? matches[1] : null;
+
+    if (!callerPath) return 'unknown';
+
+    // Remove line/column numbers and grab the filename
+    return callerPath.split(':').slice(0, -2).join(':').split('/').pop().split('\\').pop();
+};
+
 // 1. The Direct approach (Standard call)
 // This will use the version overridden by WPR's deterministic.js
 document.getElementById('direct').innerText = Math.random();
@@ -37,3 +54,8 @@ try {
 } catch (e) {
     document.getElementById('worker').innerText = "Worker Error: " + e.message;
 }
+
+(function () {
+    const p = document.getElementById('pp2');
+    p.innerHTML = `${getFileName()}, ${Math.random()}`
+})();
