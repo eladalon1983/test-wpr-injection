@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>WPR Determinism Bypass Test</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .result {
+            font-weight: bold;
+            color: green;
+        }
+
+        .success {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>WPR Determinism Bypass Test</h1>
+    <p>If WPR is working correctly, <b>Direct</b> should be the same every time you replay.</p>
+    <p>If the bypasses work, <b>IFrame</b> and <b>Worker</b> will change on every page refresh during replay.</p>
+    <div id="results">
+        <p>1. Direct (Overridden): <span id="direct" class="result">Loading</span></p>
+        <p>2. IFrame (Bypassed): <span id="iframe" class="result">Loading</span></p>
+        <p>3. Worker (Bypassed): <span id="worker" class="result">Loading</span></p>
+    </div>
+    <script src="bypass.js"></script>
+</body>
+
+</html>
