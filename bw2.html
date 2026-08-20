@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Randomized Black & White Switch</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #000000;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    let isBlack = true;
+
+    function scheduleNextSwitch() {
+      // epsilon is uniformly distributed in [-250ms, +250ms] (i.e., -0.25s to +0.25s)
+      const epsilon = (Math.random() - 0.5) * 500;
+      const delayMs = 1000 + epsilon; // Range: 750ms to 1250ms
+
+      setTimeout(() => {
+        isBlack = !isBlack;
+        document.body.style.backgroundColor = isBlack ? '#000000' : '#ffffff';
+        scheduleNextSwitch();
+      }, delayMs);
+    }
+
+    scheduleNextSwitch();
+  </script>
+</body>
+</html>
